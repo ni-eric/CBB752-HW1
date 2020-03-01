@@ -5,12 +5,9 @@ __copyright__ = "Copyright 2020"
 __license__ = "GPL"
 __version__ = "1.0.0"
 
-### Usage:      python hw1.py -i <input file> -s <score file>
+### Usage:      python hw1.py -i <input file> -s <score file> -o <open gap penalty> -e <extend gap panalty> -O <output file name>
 ### Example:    python hw1.py -i input.txt -s blosum62.txt
 ### Note:       Smith-Waterman Algorithm
-
-### Scripting must be done from scratch, without the use of any pre-existing packages.
-### Python standard library (I/O) and numpy are allowed.
 
 import argparse
 import numpy as np
@@ -31,7 +28,8 @@ def runSW(inputFile, scoreFile, openGap, extGap, outFile):
 	print ("score file : %s" % scoreFile)
 	print ("open gap penalty : %s" % openGap)
 	print ("extension gap penalty : %s" % extGap)
-
+	openGap = int(openGap)
+	extGap = int(extGap)
 	# read input file into separate string files
 	with open(inputFile,'r') as i:
 		seqs = i.read().splitlines()

@@ -6,6 +6,12 @@ Implementation of the Smith-Waterman local alignment algorithm.
 ## Prerequisites:
 - Python 2.7.x
 
+## Installation:
+Install git and then:
+```
+git clone git://github.com/ni-eric/CBB752-HW1.git
+```
+
 ## Input:
 2 Sequences for comparison, which contain no spaces and are separated by a newline
 ### Example Input:
@@ -19,8 +25,8 @@ EEERICCCNIIIIII
 python hw1.py -i <input file> -s <score file> -o <open gap penalty> -e <extend gap panalty> -O <output file name>
 ```
 The program to run is 'hw1.py'. It takes 5 parameters:
-1. Input Filename (-i): 2 sequences for performing aligment on (Required)
-2. Score Matrix Filename (-s): Substitution matrix for scoring alignments (Required)
+1. Input Filename: 2 sequences for performing aligment on (Required)
+2. Score Matrix Filename: Substitution matrix for scoring alignments (Required)
 3. Open Gap Penalty: Penalty for opening a gap when creating alignment (Optional, default = -2)
 4. Extend Gap Penalty: Penalty for extending an already open gap (Optional, default = -1)
 5. Output Filename: File name for output (Optional, default = 'output.txt')

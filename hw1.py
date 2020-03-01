@@ -144,13 +144,22 @@ def runSW(inputFile, scoreFile, openGap, extGap, outFile):
 	f.write('************************************************************\n\n')
 
 	# find maximum of entire array
-	[m,n] = np.where(SWmat==SWmat.max())
+	maxs = np.where(SWmat==SWmat.max())
+	[m,n] = np.array(maxs)
+
+	print [m,n]
+	# fix case of multiple equal maximums -> take the last one in the list 
+	# if in the same line, will take the farthest bottom right.
+	if len(np.array([m,n])[0])>1:
+		[m,n] = [np.array([m,n])[0,-1],np.array([m,n])[1,-1]]
+
 	end_m = m
 	end_n = n
+
 	target_align.insert(1,target_res[m-1])
 	template_align.insert(1,template_res[n-1])
-	print 'Maximum Alignment Score:',SWmat[m,n][0]
-	f.write('Maximum Alignment Score:'+str(SWmat[m,n][0])+'\n')
+	print 'Maximum Alignment Score:',SWmat[m,n]
+	f.write('Maximum Alignment Score:'+str(SWmat[m,n])+'\n')
 	# perform traceback
 	while (SWmat[m,n]!=0):
 		# find where arrows are pointing from that cell
